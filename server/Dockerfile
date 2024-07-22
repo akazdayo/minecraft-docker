@@ -13,10 +13,10 @@ RUN mkdir /root/minecraft
 WORKDIR /root
 
 # 起動ファイルの作成
-RUN echo "echo machine github.com login minecraft password \"\${GIT_PAT}\" > ~/.netrc" > run.sh && \
+RUN echo "echo machine github.com login \"\${GIT_NAME}\" password \"\${GIT_PAT}\" > ~/.netrc" > run.sh && \
     echo "git config --global user.name \"\${GIT_NAME}\"" >> run.sh && \
     echo "git config --global user.email \"\${GIT_EMAIL}\"" >> run.sh && \
-    echo "git clone https://github.com/akazdayo/minecraft-docker-data.git /root/minecraft" >> run.sh && \
+    echo "git clone \"\${GIT_REPO}\" /root/minecraft" >> run.sh && \
     echo "cd minecraft" >> run.sh && \
     echo "git pull origin main" >> run.sh && \
     echo 'echo "eula=true" > /root/minecraft/eula.txt' >> run.sh && \
