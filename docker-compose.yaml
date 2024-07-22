@@ -1,0 +1,13 @@
+services:
+  server:
+    container_name: minecraft-container
+    build:
+      context: ./server
+    ports:
+      - 25565:25565
+    environment:
+      - TZ=ASIA/Tokyo
+    tty: true
+    stdin_open: true
+    env_file:
+      - .env
